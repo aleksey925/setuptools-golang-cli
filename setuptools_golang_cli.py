@@ -38,20 +38,6 @@ def _check_call(cmd, cwd, env):
 
 
 def _get_build_extension_method(base, root):
-    def get_ext_fullpath(self, ext_name):
-        fullname = self.get_ext_fullname(ext_name)
-        modpath = fullname.split('.')
-        filename = get_ext_filename(modpath[-1])
-
-        filename = os.path.join(*modpath[:-1] + [filename])
-        return os.path.join(self.build_lib, filename)
-
-    def get_ext_filename(fullname):
-        extension = ''
-        if sys.platform in ('win32', 'cygwin'):
-            extension = '.exe'
-
-        return "{}-{}{}".format(fullname, sys.platform, extension)
 
     def build_extension(self, ext):
         def _raise_error(msg):
@@ -73,7 +59,7 @@ def _get_build_extension_method(base, root):
 
                 cmd_build = (
                     'go', 'build', '-o',
-                    os.path.abspath(get_ext_fullpath(self, ext.name)),
+                    os.path.abspath(self.get_ext_fullpath(ext.name)),
                     os.path.abspath(ext.sources[0])
                 )
                 _check_call(cmd_build, cwd=pkg_path, env=env)
@@ -88,7 +74,7 @@ def _get_build_extension_method(base, root):
 
             cmd_build = (
                 'go', 'build', '-o',
-                os.path.abspath(get_ext_fullpath(self, ext.name)),
+                os.path.abspath(self.get_ext_fullpath(ext.name)),
                 os.path.abspath(ext.sources[0])
             )
             _check_call(cmd_build, cwd=pkg_path, env={})

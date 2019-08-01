@@ -11,10 +11,12 @@ build_golang_cli={'root': ...}. root ссылается на корень ваш
 экземпляра класса Extension может быть указан только один файл пакетом `main`.
 Этот файл может импортировать другие пакеты.
 
-    setup(
-        ...
-        build_golang_cli={'root': 'github.com/user/project'},
-        ext_modules=[Extension('example', ['example.go'])],
-        setup_requires=['setuptools-golang-cli'],
-        ...
-    )
+```python
+setup(
+    ...
+    build_golang_cli={'root': 'github.com/user/project'},
+    ext_modules=[Extension('example', ['example.go'])],
+    setup_requires=['setuptools-golang-cli'],
+    ...
+)
+```
