@@ -1,17 +1,15 @@
-**setuptools-golang-cli**
+setuptools-golang-cli
+=====================
 
-Расширение для setuptools собирающие CLI написанные на golang.
+Setuptools extension for building golang cli.
 
-**Использование**
+**How to use**
 
-Добавьте setuptools-golang-cli в setup_requires вашего setup.py и 
-build_golang_cli={'root': ...}. root ссылается на корень вашего go проекта.
-
-В списке файлов с исходным кодом, который передается как аргумент при создании
-экземпляра класса Extension может быть указан только один файл пакетом `main`.
-Этот файл может импортировать другие пакеты.
+Add `setuptools-golang-cli` to `setup_requires` in `setup.py`, as in an example below.
 
 ```python
+from setuptools import setup, Extension
+
 setup(
     ...
     build_golang_cli={'root': 'github.com/user/project'},
