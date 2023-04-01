@@ -1,20 +1,31 @@
 setuptools-golang-cli
 =====================
 
-Setuptools extension for building golang cli.
+Setuptools extension for building cli written in golang.
 
-**How to use**
+## How to use
 
-Add `setuptools-golang-cli` to `setup_requires` in `setup.py`, as in an example below.
+`pyproject.toml`
+
+> Replace `tag-name` with the required tag.
+
+```toml
+[build-system]
+requires = [
+    "setuptools>=61.0.0",
+    "setuptools-golang-cli @ git+https://github.com/aleksey925/setuptools-golang-cli.git@tag-name",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+```
+
+`setup.py`
 
 ```python
 from setuptools import setup, Extension
 
 setup(
-    ...
-    build_golang_cli={'root': 'github.com/user/project'},
     ext_modules=[Extension('example', ['example.go'])],
-    setup_requires=['setuptools-golang-cli'],
-    ...
+    build_golang_cli={'root': 'github.com/user/project'},
 )
 ```
