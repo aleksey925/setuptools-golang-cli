@@ -99,7 +99,7 @@ def _get_build_extension_method(base, root):
             _raise_error('{} does not exist'.format(main_file))
         main_dir = os.path.dirname(main_file)
 
-        if os.path.exists(os.environ.get('GOPATH')):
+        if os.path.exists(os.environ.get('GOPATH', '')):
             build_in_user_env()
         else:
             build_in_temp_env()
