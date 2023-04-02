@@ -29,3 +29,5 @@ setup(
     build_golang_cli={'root': 'github.com/user/project'},
 )
 ```
+
+An example of usage can be found [here](https://github.com/aleksey925/py-gopac/)
